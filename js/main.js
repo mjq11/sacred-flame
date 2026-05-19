@@ -40,10 +40,22 @@
     { text: '愿世间和平，人人心生善念。', type: 'incense', time: '5小时前' },
   ];
 
+  /* 商品数据 */
+  const SHOP_ITEMS = [
+    { id: 'prayer-candle', icon: '🕯️', name: 'Prayer Candle', nameZh: '祈福蜡烛', desc: 'A blessed candle for your prayer', descZh: '一支为您祈祷祝福的蜡烛', usd: 0.99, cny: 6.99 },
+    { id: 'eternal-light', icon: '🔥', name: 'Eternal Light', nameZh: '长明灯', desc: 'Burns eternally for lasting protection', descZh: '永不熄灭的守护之光', usd: 2.99, cny: 19.99 },
+    { id: 'lotus-lantern', icon: '🪷', name: 'Lotus Lantern', nameZh: '莲花灯', desc: 'A sacred lotus to illuminate your path', descZh: '照亮前路的神圣莲花', usd: 1.99, cny: 12.99 },
+    { id: 'sacred-flowers', icon: '💐', name: 'Sacred Flowers', nameZh: '供花', desc: 'Fresh flowers as an offering', descZh: '新鲜花朵供奉神前', usd: 0.99, cny: 6.99 },
+    { id: 'sacred-fruits', icon: '🍎', name: 'Sacred Fruits', nameZh: '供果', desc: 'Blessed fruits as an offering', descZh: '五果供奉，祈求圆满', usd: 0.99, cny: 6.99 },
+    { id: 'prayer-beads', icon: '📿', name: 'Prayer Beads', nameZh: '念珠', desc: 'Meditative beads for deeper prayer', descZh: '静心念珠，深入祈祷', usd: 4.99, cny: 34.99 },
+    { id: 'prayer-bell', icon: '🔔', name: 'Prayer Bell', nameZh: '祈福钟', desc: 'Ring the bell to announce your prayer', descZh: '钟声悠扬，祈愿上达', usd: 3.99, cny: 27.99 },
+    { id: 'incense-bundle', icon: '🧧', name: 'Incense Bundle', nameZh: '高香礼盒', desc: 'Premium incense bundle set', descZh: '精选高品质香料套装', usd: 5.99, cny: 39.99 },
+  ];
+
   /* 多语言文案 */
   const I18N = {
     en: {
-      'nav.home': 'Home', 'nav.wall': 'Prayer Wall', 'nav.scripture': 'Scripture',
+      'nav.home': 'Home', 'nav.wall': 'Prayer Wall', 'nav.scripture': 'Scripture', 'nav.shop': 'Shop', 'nav.donate': 'Donate',
       'hero.tagline': 'Where Faith Meets Light',
       'hero.desc': 'No matter where you are, your prayer reaches heaven',
       'hero.scroll': '↓ Prayer Wall',
@@ -68,11 +80,18 @@
       'wall.title': '🙏 Prayer Wall',
       'wall.desc': 'Prayers from around the world, united by faith',
       'scripture.title': '📖 Scripture',
+      'shop.title': '🛕 Sacred Offerings', 'shop.desc': 'Enhance your prayer with sacred virtual offerings',
+      'shop.plans': '✨ Blessing Plans', 'shop.items': '🎁 Individual Offerings',
+      'plan.free.badge': 'Free', 'plan.free.name': 'Basic Blessing', 'plan.free.f1': '1 candle or 1 incense', 'plan.free.f2': 'Write a prayer', 'plan.free.f3': 'Scripture reading', 'plan.free.btn': 'Current Plan',
+      'plan.mid.badge': 'Most Popular', 'plan.mid.name': 'Devout Blessing', 'plan.mid.f1': '3 candles + sacred flowers', 'plan.mid.f2': 'Prayer Wall featured spot', 'plan.mid.f3': 'Golden prayer card', 'plan.mid.f4': 'Personalized scripture', 'plan.mid.btn': 'Choose Plan', 'plan.period': '/time',
+      'plan.top.badge': 'Ultimate', 'plan.top.name': 'Annual Guardian', 'plan.top.f1': 'Eternal light + lotus lantern', 'plan.top.f2': 'All sacred offerings included', 'plan.top.f3': 'Diamond prayer card on Wall', 'plan.top.f4': '365-day continuous blessing', 'plan.top.f5': 'Priority prayer queue', 'plan.top.btn': 'Choose Plan', 'plan.period.yr': '/year',
+      'donate.title': '💝 Offerings & Donations', 'donate.desc': 'Your generosity keeps this sacred space alive for all', 'donate.custom': 'Custom', 'donate.btn': '💝 Donate Now', 'donate.note': 'All donations support site maintenance and development',
+      'modal.pay': 'Choose payment method:', 'modal.wechat': 'WeChat Pay', 'modal.disclaimer': 'Payment integration coming soon. Thank you for your interest!',
       'footer.desc': 'A space for prayer and peace',
       'footer.disclaimer': 'This site is for spiritual comfort only and does not represent any religious organization.',
     },
     zh: {
-      'nav.home': '首页', 'nav.wall': '祈祷墙', 'nav.scripture': '经文',
+      'nav.home': '首页', 'nav.wall': '祈祷墙', 'nav.scripture': '经文', 'nav.shop': '商城', 'nav.donate': '捐赠',
       'hero.tagline': '信仰之光，照亮心灵',
       'hero.desc': '无论身在何方，您的祈祷都能抵达天际',
       'hero.scroll': '↓ 祈祷墙',
@@ -97,12 +116,20 @@
       'wall.title': '🙏 祈祷墙',
       'wall.desc': '来自世界各地的祈祷，因信仰而汇聚',
       'scripture.title': '📖 经文阅读',
+      'shop.title': '🛕 神圣供品', 'shop.desc': '以虔诚的供品增强您的祈祷',
+      'shop.plans': '✨ 祈福套餐', 'shop.items': '🎁 单品供品',
+      'plan.free.badge': '免费', 'plan.free.name': '基础祈福', 'plan.free.f1': '1支蜡烛或1柱香', 'plan.free.f2': '撰写祈祷', 'plan.free.f3': '经文阅读', 'plan.free.btn': '当前套餐',
+      'plan.mid.badge': '最受欢迎', 'plan.mid.name': '诚心祈福', 'plan.mid.f1': '3支蜡烛 + 供花', 'plan.mid.f2': '祈祷墙精选位', 'plan.mid.f3': '金色祈祷卡', 'plan.mid.f4': '个性化经文', 'plan.mid.btn': '选择套餐', 'plan.period': '/次',
+      'plan.top.badge': '至尊', 'plan.top.name': '全年守护', 'plan.top.f1': '长明灯 + 莲花灯', 'plan.top.f2': '包含全部供品', 'plan.top.f3': '钻石祈祷卡展示', 'plan.top.f4': '365天持续祝福', 'plan.top.f5': '优先祈祷通道', 'plan.top.btn': '选择套餐', 'plan.period.yr': '/年',
+      'donate.title': '💝 功德捐赠', 'donate.desc': '您的慷慨让这个神圣空间持续为众人服务', 'donate.custom': '自定义', 'donate.btn': '💝 立即捐赠', 'donate.note': '所有捐赠用于网站维护和发展',
+      'modal.pay': '选择支付方式：', 'modal.wechat': '微信支付', 'modal.disclaimer': '支付功能即将上线，感谢您的关注！',
       'footer.desc': '一个祈祷与宁静的空间',
       'footer.disclaimer': '本网站仅供心灵慰藉，不代表任何宗教组织。',
     }
   };
 
   let currentLang = 'en';
+  let currentCurrency = 'usd';
   let meritCount = parseInt(localStorage.getItem('sf_merit') || '0');
   let litCandles = JSON.parse(localStorage.getItem('sf_candles') || '[]');
 
@@ -112,6 +139,7 @@
     initCandles();
     buildWall();
     buildScripture('bible');
+    buildShop();
     bindEvents();
     document.getElementById('merit-count').textContent = meritCount;
     // 恢复已点亮的蜡烛
@@ -359,6 +387,86 @@
     document.getElementById('audio-toggle').textContent = audioEnabled ? '🔊' : '🔇';
   }
 
+  /* ---------- 商城模块 ---------- */
+  function buildShop() {
+    const grid = document.getElementById('shop-grid');
+    grid.innerHTML = '';
+    SHOP_ITEMS.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'shop-item';
+      el.style.animationDelay = `${i * 0.08}s`;
+      const name = currentLang === 'zh' ? item.nameZh : item.name;
+      const desc = currentLang === 'zh' ? item.descZh : item.desc;
+      const price = currentCurrency === 'usd' ? `$${item.usd}` : `¥${item.cny}`;
+      el.innerHTML = `
+        <div class="shop-item-icon">${item.icon}</div>
+        <div class="shop-item-name">${name}</div>
+        <div class="shop-item-desc">${desc}</div>
+        <div class="shop-item-price">${price}</div>
+        <button class="shop-item-btn" data-id="${item.id}">${currentLang === 'zh' ? '供奉' : 'Offer'}</button>
+      `;
+      grid.appendChild(el);
+    });
+  }
+
+  function toggleCurrency() {
+    currentCurrency = currentCurrency === 'usd' ? 'cny' : 'usd';
+    const btn = document.getElementById('currency-toggle');
+    btn.textContent = currentCurrency === 'usd' ? '$ USD' : '¥ CNY';
+    // 切换所有价格显示
+    document.querySelectorAll('.price-usd').forEach(el => {
+      el.style.display = currentCurrency === 'usd' ? '' : 'none';
+    });
+    document.querySelectorAll('.price-cny').forEach(el => {
+      el.style.display = currentCurrency === 'cny' ? '' : 'none';
+    });
+    buildShop();
+  }
+
+  function openPurchaseModal(productId) {
+    const modal = document.getElementById('purchase-modal');
+    // 查找商品信息
+    let item = SHOP_ITEMS.find(i => i.id === productId);
+    let icon, title, price, desc;
+    if (item) {
+      icon = item.icon;
+      title = currentLang === 'zh' ? item.nameZh : item.name;
+      price = currentCurrency === 'usd' ? `$${item.usd}` : `¥${item.cny}`;
+      desc = currentLang === 'zh' ? item.descZh : item.desc;
+    } else if (productId === 'devout-blessing') {
+      icon = '✨'; title = currentLang === 'zh' ? '诚心祈福' : 'Devout Blessing';
+      price = currentCurrency === 'usd' ? '$2.99' : '¥19.99';
+      desc = currentLang === 'zh' ? '3支蜡烛 + 供花 + 祈祷墙精选位 + 金色祈祷卡' : '3 candles + sacred flowers + featured spot + golden card';
+    } else if (productId === 'annual-guardian') {
+      icon = '👑'; title = currentLang === 'zh' ? '全年守护' : 'Annual Guardian';
+      price = currentCurrency === 'usd' ? '$19.99' : '¥139.99';
+      desc = currentLang === 'zh' ? '包含全部供品 + 365天持续祝福 + 钻石祈祷卡' : 'All offerings + 365-day blessing + diamond card';
+    } else if (productId === 'donate') {
+      icon = '💝'; title = currentLang === 'zh' ? '功德捐赠' : 'Donation';
+      const customInput = document.getElementById('donate-custom');
+      const activeAmt = document.querySelector('.donate-amt.active');
+      let amt;
+      if (activeAmt && activeAmt.dataset.amt === 'custom' && customInput.value) {
+        amt = customInput.value;
+      } else if (activeAmt) {
+        amt = activeAmt.dataset.amt;
+      } else {
+        amt = '10';
+      }
+      price = currentCurrency === 'usd' ? `$${amt}` : `¥${Math.round(amt * 7)}`;
+      desc = currentLang === 'zh' ? '您的慷慨让这个空间持续服务' : 'Your generosity keeps this space alive';
+    }
+    document.getElementById('modal-icon').textContent = icon;
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-price').textContent = price;
+    document.getElementById('modal-desc').textContent = desc;
+    modal.classList.remove('hidden');
+  }
+
+  function closePurchaseModal() {
+    document.getElementById('purchase-modal').classList.add('hidden');
+  }
+
   /* ---------- 工具函数 ---------- */
   function escapeHtml(str) {
     const d = document.createElement('div');
@@ -409,16 +517,62 @@
     });
 
     // 语言切换
-    document.getElementById('lang-toggle').addEventListener('click', toggleLang);
+    document.getElementById('lang-toggle').addEventListener('click', () => { toggleLang(); buildShop(); });
+
+    // 币种切换
+    document.getElementById('currency-toggle').addEventListener('click', toggleCurrency);
 
     // 音效
     document.getElementById('audio-toggle').addEventListener('click', toggleAudio);
+
+    // 商城购买按钮（事件委托）
+    document.getElementById('shop-grid').addEventListener('click', (e) => {
+      const btn = e.target.closest('.shop-item-btn');
+      if (btn) openPurchaseModal(btn.dataset.id);
+    });
+
+    // 套餐购买按钮
+    document.querySelectorAll('.plan-btn.buy-btn').forEach(btn => {
+      btn.addEventListener('click', () => openPurchaseModal(btn.dataset.product));
+    });
+
+    // 捐赠金额选择
+    document.querySelectorAll('.donate-amt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.donate-amt').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const customInput = document.getElementById('donate-custom');
+        if (btn.dataset.amt === 'custom') {
+          customInput.classList.remove('hidden');
+          customInput.focus();
+        } else {
+          customInput.classList.add('hidden');
+        }
+      });
+    });
+
+    // 捐赠按钮
+    document.getElementById('donate-btn').addEventListener('click', () => openPurchaseModal('donate'));
+
+    // 弹窗关闭
+    document.getElementById('modal-close').addEventListener('click', closePurchaseModal);
+    document.getElementById('purchase-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closePurchaseModal();
+    });
+
+    // 支付按钮（展示性）
+    document.querySelectorAll('.pay-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert(currentLang === 'zh' ? '支付功能即将上线，敬请期待！' : 'Payment coming soon. Thank you for your interest!');
+      });
+    });
 
     // 键盘支持
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeScene('candle');
         closeScene('incense');
+        closePurchaseModal();
       }
     });
 

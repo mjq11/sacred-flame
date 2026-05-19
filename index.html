@@ -21,7 +21,10 @@
         <a href="#hero" data-i18n="nav.home">Home</a>
         <a href="#prayer-wall" data-i18n="nav.wall">Prayer Wall</a>
         <a href="#scripture-section" data-i18n="nav.scripture">Scripture</a>
+        <a href="#offerings-section" data-i18n="nav.shop">Shop</a>
+        <a href="#donate-section" data-i18n="nav.donate">Donate</a>
       </div>
+      <button class="currency-toggle" id="currency-toggle" aria-label="Toggle currency">$ USD</button>
       <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
         <span class="lang-en">中文</span>
         <span class="lang-zh" style="display:none">EN</span>
@@ -193,6 +196,98 @@
     </div>
     <div class="scripture-content" id="scripture-content"></div>
   </section>
+
+  <!-- ========== 供品商城 ========== -->
+  <section id="offerings-section">
+    <h2 class="section-title" data-i18n="shop.title">🛕 Sacred Offerings</h2>
+    <p class="section-desc" data-i18n="shop.desc">Enhance your prayer with sacred virtual offerings</p>
+
+    <!-- 祈福套餐 -->
+    <div class="plans-area">
+      <h3 class="subsection-title" data-i18n="shop.plans">✨ Blessing Plans</h3>
+      <div class="plans-grid">
+        <div class="plan-card">
+          <div class="plan-badge free" data-i18n="plan.free.badge">Free</div>
+          <h4 class="plan-name" data-i18n="plan.free.name">Basic Blessing</h4>
+          <div class="plan-price"><span class="price-usd">$0</span><span class="price-cny" style="display:none">¥0</span></div>
+          <ul class="plan-features">
+            <li data-i18n="plan.free.f1">1 candle or 1 incense</li>
+            <li data-i18n="plan.free.f2">Write a prayer</li>
+            <li data-i18n="plan.free.f3">Scripture reading</li>
+          </ul>
+          <button class="plan-btn current" data-i18n="plan.free.btn">Current Plan</button>
+        </div>
+        <div class="plan-card featured">
+          <div class="plan-badge popular" data-i18n="plan.mid.badge">Most Popular</div>
+          <h4 class="plan-name" data-i18n="plan.mid.name">Devout Blessing</h4>
+          <div class="plan-price"><span class="price-usd">$2.99</span><span class="price-cny" style="display:none">¥19.99</span><span class="price-period" data-i18n="plan.period">/time</span></div>
+          <ul class="plan-features">
+            <li data-i18n="plan.mid.f1">3 candles + sacred flowers</li>
+            <li data-i18n="plan.mid.f2">Prayer Wall featured spot</li>
+            <li data-i18n="plan.mid.f3">Golden prayer card</li>
+            <li data-i18n="plan.mid.f4">Personalized scripture</li>
+          </ul>
+          <button class="plan-btn buy-btn" data-product="devout-blessing" data-i18n="plan.mid.btn">Choose Plan</button>
+        </div>
+        <div class="plan-card premium">
+          <div class="plan-badge ultimate" data-i18n="plan.top.badge">Ultimate</div>
+          <h4 class="plan-name" data-i18n="plan.top.name">Annual Guardian</h4>
+          <div class="plan-price"><span class="price-usd">$19.99</span><span class="price-cny" style="display:none">¥139.99</span><span class="price-period" data-i18n="plan.period.yr">/year</span></div>
+          <ul class="plan-features">
+            <li data-i18n="plan.top.f1">Eternal light + lotus lantern</li>
+            <li data-i18n="plan.top.f2">All sacred offerings included</li>
+            <li data-i18n="plan.top.f3">Diamond prayer card on Wall</li>
+            <li data-i18n="plan.top.f4">365-day continuous blessing</li>
+            <li data-i18n="plan.top.f5">Priority prayer queue</li>
+          </ul>
+          <button class="plan-btn buy-btn" data-product="annual-guardian" data-i18n="plan.top.btn">Choose Plan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 单品供品 -->
+    <h3 class="subsection-title" data-i18n="shop.items">🎁 Individual Offerings</h3>
+    <div class="shop-grid" id="shop-grid"></div>
+  </section>
+
+  <!-- ========== 功德捐赠 ========== -->
+  <section id="donate-section">
+    <h2 class="section-title" data-i18n="donate.title">💝 Offerings & Donations</h2>
+    <p class="section-desc" data-i18n="donate.desc">Your generosity keeps this sacred space alive for all</p>
+    <div class="donate-box">
+      <div class="donate-amounts">
+        <button class="donate-amt" data-amt="1"><span class="price-usd">$1</span><span class="price-cny" style="display:none">¥7</span></button>
+        <button class="donate-amt" data-amt="5"><span class="price-usd">$5</span><span class="price-cny" style="display:none">¥35</span></button>
+        <button class="donate-amt active" data-amt="10"><span class="price-usd">$10</span><span class="price-cny" style="display:none">¥70</span></button>
+        <button class="donate-amt" data-amt="25"><span class="price-usd">$25</span><span class="price-cny" style="display:none">¥175</span></button>
+        <button class="donate-amt" data-amt="50"><span class="price-usd">$50</span><span class="price-cny" style="display:none">¥350</span></button>
+        <button class="donate-amt custom-amt" data-amt="custom" data-i18n="donate.custom">Custom</button>
+      </div>
+      <input type="number" class="donate-custom-input hidden" id="donate-custom" placeholder="Enter amount" min="1">
+      <button class="submit-btn donate-btn" id="donate-btn" data-i18n="donate.btn">💝 Donate Now</button>
+      <p class="donate-note" data-i18n="donate.note">All donations support site maintenance and development</p>
+    </div>
+  </section>
+
+  <!-- ========== 购买弹窗 ========== -->
+  <div class="modal-overlay hidden" id="purchase-modal">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-icon" id="modal-icon">🕯️</div>
+      <h3 class="modal-title" id="modal-title">Item Name</h3>
+      <p class="modal-price" id="modal-price">$0.00</p>
+      <p class="modal-desc" id="modal-desc">Description</p>
+      <div class="modal-payment">
+        <p class="modal-pay-label" data-i18n="modal.pay">Choose payment method:</p>
+        <div class="pay-methods">
+          <button class="pay-btn paypal">PayPal</button>
+          <button class="pay-btn stripe">Credit Card</button>
+          <button class="pay-btn wechat" data-i18n="modal.wechat">WeChat Pay</button>
+        </div>
+      </div>
+      <p class="modal-disclaimer" data-i18n="modal.disclaimer">Payment integration coming soon. Thank you for your interest!</p>
+    </div>
+  </div>
 
   <!-- ========== Footer ========== -->
   <footer id="site-footer">
