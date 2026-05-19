@@ -40,6 +40,13 @@
       <p class="hero-tagline" data-i18n="hero.tagline">Where Faith Meets Light</p>
       <p class="hero-desc" data-i18n="hero.desc">No matter where you are, your prayer reaches heaven</p>
 
+      <!-- 今日经文 -->
+      <div class="daily-verse" id="daily-verse">
+        <span class="daily-label" data-i18n="daily.label">✨ Today's Blessing</span>
+        <p class="daily-text" id="daily-text"></p>
+        <cite class="daily-ref" id="daily-ref"></cite>
+      </div>
+
       <div class="mode-cards">
         <!-- 蜡烛模式卡片 -->
         <div class="mode-card" id="card-candle" tabindex="0" role="button" aria-label="Enter Candle Prayer mode">
@@ -56,6 +63,15 @@
           <div class="mode-card-icon">🔥</div>
           <h2 class="mode-card-title" data-i18n="mode.incense.title">Incense Prayer</h2>
           <p class="mode-card-desc" data-i18n="mode.incense.desc">Burn incense, make a wish</p>
+          <span class="mode-card-btn" data-i18n="mode.enter">Enter →</span>
+        </div>
+
+        <!-- 求签模式卡片 -->
+        <div class="mode-card" id="card-fortune" tabindex="0" role="button" aria-label="Enter Fortune Drawing mode">
+          <div class="mode-card-glow fortune-glow"></div>
+          <div class="mode-card-icon">🎋</div>
+          <h2 class="mode-card-title" data-i18n="mode.fortune.title">Fortune Sticks</h2>
+          <p class="mode-card-desc" data-i18n="mode.fortune.desc">Shake & draw your fortune</p>
           <span class="mode-card-btn" data-i18n="mode.enter">Enter →</span>
         </div>
       </div>
@@ -105,6 +121,10 @@
       <!-- 祈祷输入 -->
       <div class="prayer-input-wrap hidden" id="candle-input">
         <p class="input-prompt" data-i18n="candle.prompt">What's on your heart?</p>
+        <div class="pray-for-wrap">
+          <label data-i18n="pray.for">🤍 Pray for:</label>
+          <input type="text" class="pray-for-input" id="candle-prayfor" data-i18n-placeholder="pray.for.ph" placeholder="A loved one's name (optional)">
+        </div>
         <textarea id="candle-textarea" maxlength="200" data-i18n-placeholder="candle.placeholder" placeholder="Write your prayer..."></textarea>
         <button class="submit-btn" id="candle-submit" data-i18n="candle.submit">Amen 🙏</button>
       </div>
@@ -150,6 +170,10 @@
       <!-- 祈愿输入 -->
       <div class="prayer-input-wrap hidden" id="incense-input">
         <p class="input-prompt" data-i18n="incense.prompt">写下您的心愿</p>
+        <div class="pray-for-wrap">
+          <label data-i18n="pray.for.zh">🤍 为谁祈福：</label>
+          <input type="text" class="pray-for-input" id="incense-prayfor" data-i18n-placeholder="pray.for.ph.zh" placeholder="亲人的名字（选填）">
+        </div>
         <div class="wish-cats" id="wish-cats">
           <button class="wish-cat active" data-cat="health">🏥 <span data-i18n="cat.health">平安健康</span></button>
           <button class="wish-cat" data-cat="study">📚 <span data-i18n="cat.study">学业有成</span></button>
@@ -176,6 +200,38 @@
           <span data-i18n="merit.label">功德</span>: <span id="merit-count">0</span>
         </div>
         <div class="merit-floats" id="merit-floats"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 求签场景 ========== -->
+  <section id="fortune-scene" class="prayer-scene" aria-hidden="true">
+    <div class="scene-overlay fortune-overlay"></div>
+    <button class="back-btn" id="fortune-back" data-i18n="btn.back">← Back</button>
+    <div class="temple-glow"></div>
+    <div class="scene-body">
+      <h2 class="scene-title" data-i18n="fortune.title">🎋 求签问卦</h2>
+      <p class="scene-subtitle" data-i18n="fortune.subtitle">心诚则灵，摇签问天意</p>
+
+      <div class="fortune-container">
+        <div class="sign-tube" id="sign-tube">
+          <div class="tube-body">
+            <div class="stick-bundle" id="stick-bundle">
+              <div class="f-stick"></div><div class="f-stick"></div><div class="f-stick"></div>
+              <div class="f-stick"></div><div class="f-stick"></div><div class="f-stick"></div>
+              <div class="f-stick"></div><div class="f-stick"></div><div class="f-stick"></div>
+            </div>
+          </div>
+          <div class="tube-base"></div>
+        </div>
+        <button class="action-btn glow-btn shake-btn" id="shake-btn" data-i18n="fortune.shake">🎋 摇签</button>
+      </div>
+
+      <div class="fortune-result hidden" id="fortune-result">
+        <div class="fortune-rank" id="fortune-rank"></div>
+        <div class="fortune-poem" id="fortune-poem"></div>
+        <div class="fortune-explain" id="fortune-explain"></div>
+        <button class="action-btn" id="fortune-again" data-i18n="fortune.again">🔄 再求一签</button>
       </div>
     </div>
   </section>

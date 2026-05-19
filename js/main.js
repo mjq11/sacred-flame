@@ -52,6 +52,18 @@
     { id: 'incense-bundle', icon: '🧧', name: 'Incense Bundle', nameZh: '高香礼盒', desc: 'Premium incense bundle set', descZh: '精选高品质香料套装', usd: 5.99, cny: 39.99 },
   ];
 
+  /* 签文数据 */
+  const FORTUNES = [
+    { rank: '上上签', rankEn: 'Supreme Fortune', css: 'rank-best', poem: '龙凤呈祥万事兴，\n花开富贵秀前程。\n天赐鸿福通四海，\n一帆风顺达云峥。', explain: '此签大吉！事业、家庭、健康均有大好前景。当前所做之事均能顺利达成，贵人相助，万事亨通。' },
+    { rank: '上签', rankEn: 'Great Fortune', css: 'rank-good', poem: '春风得意马蹄疾，\n一日看尽长安花。\n前路光明无障碍，\n功名富贵两相全。', explain: '吉签。目前运势很好，努力将得到回报。学业事业均有进展，宜积极把握机会。' },
+    { rank: '上签', rankEn: 'Great Fortune', css: 'rank-good', poem: '守得云开见月明，\n苦尽甘来事自成。\n家宅平安人健康，\n远方亲人报平安。', explain: '吉签。经历困难后将迎来转机。家人平安，远方亲人一切安好，不必担心。' },
+    { rank: '中吉签', rankEn: 'Good Fortune', css: 'rank-good', poem: '天边日出霞光照，\n心中有事自然成。\n莫急莫躁守本分，\n转眼花开在春风。', explain: '较好。事情会往好的方向发展，但需耐心等待。不宜急躁，顺其自然则吉。' },
+    { rank: '中签', rankEn: 'Moderate Fortune', css: 'rank-mid', poem: '平地风波未可知，\n行船宜稳不宜急。\n若能稳守待时转，\n自有贵人来相助。', explain: '平稳。目前运势平平，不宜冒进。稳打稳扎，耐心等待，贵人自会出现。' },
+    { rank: '中签', rankEn: 'Moderate Fortune', css: 'rank-mid', poem: '路遥知马力方显，\n日久见人心自明。\n不必担忧前路远，\n步步为营终可期。', explain: '平稳。需要坚持和耐心。不要因眼前困难而气馊，坚持下去必有收获。' },
+    { rank: '中平签', rankEn: 'Fair Fortune', css: 'rank-mid', poem: '云遮日头光暂暗，\n雨过天晴彩虹来。\n万事谨慎方为吉，\n退一步处海阔天。', explain: '一般。目前运势有些波折，但都能过去。做事谨慎，退一步反而更好。' },
+    { rank: '下签', rankEn: 'Challenging Fortune', css: 'rank-low', poem: '云深不见征鸿影，\n雨重难行前路程。\n但将心念存善意，\n自有光明在前方。', explain: '近期可能会遇到一些困难，但只要保持善念和耐心，困难终会过去。多行善事，积累功德。' },
+  ];
+
   /* 多语言文案 */
   const I18N = {
     en: {
@@ -61,13 +73,18 @@
       'hero.scroll': '↓ Prayer Wall',
       'mode.candle.title': 'Candle Prayer', 'mode.candle.desc': 'Light a candle, offer your prayer',
       'mode.incense.title': 'Incense Prayer', 'mode.incense.desc': 'Burn incense, make a wish',
+      'mode.fortune.title': 'Fortune Sticks', 'mode.fortune.desc': 'Shake & draw your fortune',
       'mode.enter': 'Enter →', 'btn.back': '← Back',
+      'daily.label': '✨ Today\'s Blessing',
+      'pray.for': '🤍 Pray for:', 'pray.for.ph': 'A loved one\'s name (optional)',
       'candle.title': 'Light a Candle for Your Prayer',
       'candle.subtitle': 'Let your light shine before others — Matthew 5:16',
       'candle.light': '🕯️ Light a Candle',
       'candle.prompt': "What's on your heart?",
       'candle.placeholder': 'Write your prayer...',
       'candle.submit': 'Amen 🙏',
+      'fortune.title': '🎋 Fortune Sticks', 'fortune.subtitle': 'Sincerity brings divine response. Shake to reveal your fortune.',
+      'fortune.shake': '🎋 Shake', 'fortune.again': '🔄 Draw Again',
       'incense.title': 'Incense Prayer',
       'incense.subtitle': 'Sincerity brings divine response',
       'incense.one': '🔥 One Incense', 'incense.three': '🔥 Three Incense',
@@ -97,13 +114,19 @@
       'hero.scroll': '↓ 祈祷墙',
       'mode.candle.title': '蜡烛祈祷', 'mode.candle.desc': '点一支蜡烛，献上您的祈祷',
       'mode.incense.title': '烧香祈福', 'mode.incense.desc': '点一柱香，许下心愿',
+      'mode.fortune.title': '求签问卦', 'mode.fortune.desc': '摇签问天意，求签解惑',
       'mode.enter': '进入 →', 'btn.back': '← 返回',
+      'daily.label': '✨ 今日祈语',
+      'pray.for': '🤍 为谁祈祷：', 'pray.for.ph': '亲人的名字（选填）',
+      'pray.for.zh': '🤍 为谁祈福：', 'pray.for.ph.zh': '亲人的名字（选填）',
       'candle.title': '为您的祈祷点亮烛光',
       'candle.subtitle': '你们的光也当照在人前 —— 马太福音 5:16',
       'candle.light': '🕯️ 点亮蜡烛',
       'candle.prompt': '您心中的祈祷是什么？',
       'candle.placeholder': '写下您的祈祷...',
       'candle.submit': '阿门 🙏',
+      'fortune.title': '🎋 求签问卦', 'fortune.subtitle': '心诚则灵，摇签问天意',
+      'fortune.shake': '🎋 摇签', 'fortune.again': '🔄 再求一签',
       'incense.title': '虔诚上香',
       'incense.subtitle': '心诚则灵，万里亦至',
       'incense.one': '🔥 上一柱香', 'incense.three': '🔥 上三柱香',
@@ -140,6 +163,7 @@
     buildWall();
     buildScripture('bible');
     buildShop();
+    showDailyVerse();
     bindEvents();
     document.getElementById('merit-count').textContent = meritCount;
     // 恢复已点亮的蜡烛
@@ -147,6 +171,16 @@
       const c = document.querySelector(`.candle[data-index="${i}"]`);
       if (c) c.classList.add('lit');
     });
+  }
+
+  /* ---------- 今日经文 ---------- */
+  function showDailyVerse() {
+    // 根据日期选择经文，每天不同
+    const allVerses = [...BIBLE_VERSES, ...SUTRA_VERSES];
+    const dayIndex = Math.floor(Date.now() / 86400000) % allVerses.length;
+    const verse = allVerses[dayIndex];
+    document.getElementById('daily-text').textContent = verse.text;
+    document.getElementById('daily-ref').textContent = verse.ref;
   }
 
   /* ---------- 粒子背景 ---------- */
@@ -323,7 +357,8 @@
     const hero = document.getElementById('hero');
     hero.classList.add('fade-out');
     document.body.style.overflow = 'hidden';
-    const sceneId = mode === 'candle' ? 'candle-scene' : 'incense-scene';
+    const sceneMap = { candle: 'candle-scene', incense: 'incense-scene', fortune: 'fortune-scene' };
+    const sceneId = sceneMap[mode];
     setTimeout(() => {
       document.getElementById(sceneId).classList.add('active');
       document.getElementById(sceneId).setAttribute('aria-hidden', 'false');
@@ -331,9 +366,12 @@
   }
 
   function closeScene(mode) {
-    const sceneId = mode === 'candle' ? 'candle-scene' : 'incense-scene';
-    document.getElementById(sceneId).classList.remove('active');
-    document.getElementById(sceneId).setAttribute('aria-hidden', 'true');
+    const sceneMap = { candle: 'candle-scene', incense: 'incense-scene', fortune: 'fortune-scene' };
+    const sceneId = sceneMap[mode];
+    const el = document.getElementById(sceneId);
+    if (!el) return;
+    el.classList.remove('active');
+    el.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     const hero = document.getElementById('hero');
     hero.classList.remove('fade-out');
@@ -385,6 +423,33 @@
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     audioEnabled = !audioEnabled;
     document.getElementById('audio-toggle').textContent = audioEnabled ? '🔊' : '🔇';
+  }
+
+  /* ---------- 求签模块 ---------- */
+  function drawFortune() {
+    const tube = document.getElementById('sign-tube');
+    const resultEl = document.getElementById('fortune-result');
+    const shakeBtn = document.getElementById('shake-btn');
+    // 摇签动画
+    tube.classList.add('shaking');
+    shakeBtn.disabled = true;
+    resultEl.classList.add('hidden');
+    playTone(200, 0.3, 0.3);
+    setTimeout(() => playTone(250, 0.2, 0.2), 200);
+    setTimeout(() => playTone(300, 0.2, 0.2), 400);
+    setTimeout(() => {
+      tube.classList.remove('shaking');
+      shakeBtn.disabled = false;
+      // 抽签
+      const fortune = FORTUNES[Math.floor(Math.random() * FORTUNES.length)];
+      const rankText = currentLang === 'en' ? fortune.rankEn : fortune.rank;
+      document.getElementById('fortune-rank').textContent = rankText;
+      document.getElementById('fortune-rank').className = 'fortune-rank ' + fortune.css;
+      document.getElementById('fortune-poem').innerHTML = fortune.poem.replace(/\\n/g, '<br>');
+      document.getElementById('fortune-explain').textContent = fortune.explain;
+      resultEl.classList.remove('hidden');
+      playTone(500, 0.5, 0.3);
+    }, 1500);
   }
 
   /* ---------- 商城模块 ---------- */
@@ -479,10 +544,16 @@
     // 模式选择
     document.getElementById('card-candle').addEventListener('click', () => openScene('candle'));
     document.getElementById('card-incense').addEventListener('click', () => openScene('incense'));
+    document.getElementById('card-fortune').addEventListener('click', () => openScene('fortune'));
 
     // 返回
     document.getElementById('candle-back').addEventListener('click', () => closeScene('candle'));
     document.getElementById('incense-back').addEventListener('click', () => closeScene('incense'));
+    document.getElementById('fortune-back').addEventListener('click', () => closeScene('fortune'));
+
+    // 求签
+    document.getElementById('shake-btn').addEventListener('click', drawFortune);
+    document.getElementById('fortune-again').addEventListener('click', drawFortune);
 
     // 点蜡烛
     document.getElementById('light-candle-btn').addEventListener('click', lightNextCandle);
@@ -572,6 +643,7 @@
       if (e.key === 'Escape') {
         closeScene('candle');
         closeScene('incense');
+        closeScene('fortune');
         closePurchaseModal();
       }
     });
@@ -581,6 +653,7 @@
       a.addEventListener('click', () => {
         closeScene('candle');
         closeScene('incense');
+        closeScene('fortune');
       });
     });
   }
