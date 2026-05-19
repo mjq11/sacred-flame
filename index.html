@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacred Flame — Online Prayer & Incense</title>
+  <meta name="description" content="A cross-cultural online prayer platform. Light a candle or burn incense — wherever you are, your prayer reaches heaven.">
+  <meta name="keywords" content="online prayer, virtual candle, incense burning, 在线祈福, 烧香">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== 导航栏 ========== -->
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" id="nav-logo">🔥 Sacred Flame</a>
+      <div class="nav-links">
+        <a href="#hero" data-i18n="nav.home">Home</a>
+        <a href="#prayer-wall" data-i18n="nav.wall">Prayer Wall</a>
+        <a href="#scripture-section" data-i18n="nav.scripture">Scripture</a>
+      </div>
+      <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+        <span class="lang-en">中文</span>
+        <span class="lang-zh" style="display:none">EN</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== Hero 区域 ========== -->
+  <section id="hero">
+    <div class="hero-particles" id="hero-particles"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Sacred Flame</h1>
+      <p class="hero-tagline" data-i18n="hero.tagline">Where Faith Meets Light</p>
+      <p class="hero-desc" data-i18n="hero.desc">No matter where you are, your prayer reaches heaven</p>
+
+      <div class="mode-cards">
+        <!-- 蜡烛模式卡片 -->
+        <div class="mode-card" id="card-candle" tabindex="0" role="button" aria-label="Enter Candle Prayer mode">
+          <div class="mode-card-glow candle-glow"></div>
+          <div class="mode-card-icon">🕯️</div>
+          <h2 class="mode-card-title" data-i18n="mode.candle.title">Candle Prayer</h2>
+          <p class="mode-card-desc" data-i18n="mode.candle.desc">Light a candle, offer your prayer</p>
+          <span class="mode-card-btn" data-i18n="mode.enter">Enter →</span>
+        </div>
+
+        <!-- 烧香模式卡片 -->
+        <div class="mode-card" id="card-incense" tabindex="0" role="button" aria-label="Enter Incense Prayer mode">
+          <div class="mode-card-glow incense-glow"></div>
+          <div class="mode-card-icon">🔥</div>
+          <h2 class="mode-card-title" data-i18n="mode.incense.title">Incense Prayer</h2>
+          <p class="mode-card-desc" data-i18n="mode.incense.desc">Burn incense, make a wish</p>
+          <span class="mode-card-btn" data-i18n="mode.enter">Enter →</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint" data-i18n="hero.scroll">↓ Prayer Wall</div>
+  </section>
+
+  <!-- ========== 蜡烛祈祷场景 ========== -->
+  <section id="candle-scene" class="prayer-scene" aria-hidden="true">
+    <div class="scene-overlay"></div>
+    <button class="back-btn" id="candle-back" data-i18n="btn.back">← Back</button>
+
+    <!-- 教堂装饰光效 -->
+    <div class="church-glow"></div>
+    <div class="cross-symbol">✝</div>
+
+    <div class="scene-body">
+      <h2 class="scene-title" data-i18n="candle.title">Light a Candle for Your Prayer</h2>
+      <p class="scene-subtitle" data-i18n="candle.subtitle">Let your light shine before others</p>
+
+      <!-- 蜡烛架 -->
+      <div class="candle-rack" id="candle-rack">
+        <div class="candle" data-index="0">
+          <div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div>
+          <div class="wick"></div><div class="wax"></div><div class="wax-drip"></div>
+        </div>
+        <div class="candle" data-index="1">
+          <div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div>
+          <div class="wick"></div><div class="wax"></div><div class="wax-drip"></div>
+        </div>
+        <div class="candle" data-index="2">
+          <div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div>
+          <div class="wick"></div><div class="wax"></div><div class="wax-drip"></div>
+        </div>
+        <div class="candle" data-index="3">
+          <div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div>
+          <div class="wick"></div><div class="wax"></div><div class="wax-drip"></div>
+        </div>
+        <div class="candle" data-index="4">
+          <div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div>
+          <div class="wick"></div><div class="wax"></div><div class="wax-drip"></div>
+        </div>
+      </div>
+
+      <button class="action-btn glow-btn" id="light-candle-btn" data-i18n="candle.light">🕯️ Light a Candle</button>
+
+      <!-- 祈祷输入 -->
+      <div class="prayer-input-wrap hidden" id="candle-input">
+        <p class="input-prompt" data-i18n="candle.prompt">What's on your heart?</p>
+        <textarea id="candle-textarea" maxlength="200" data-i18n-placeholder="candle.placeholder" placeholder="Write your prayer..."></textarea>
+        <button class="submit-btn" id="candle-submit" data-i18n="candle.submit">Amen 🙏</button>
+      </div>
+
+      <!-- 经文展示 -->
+      <div class="scripture-reveal hidden" id="candle-scripture">
+        <blockquote id="candle-verse-text"></blockquote>
+        <cite id="candle-verse-ref"></cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 烧香祈福场景 ========== -->
+  <section id="incense-scene" class="prayer-scene" aria-hidden="true">
+    <div class="scene-overlay"></div>
+    <button class="back-btn" id="incense-back" data-i18n="btn.back">← Back</button>
+
+    <!-- 佛堂装饰光效 -->
+    <div class="temple-glow"></div>
+    <div class="buddha-symbol">☸</div>
+
+    <div class="scene-body">
+      <h2 class="scene-title" data-i18n="incense.title">虔诚上香</h2>
+      <p class="scene-subtitle" data-i18n="incense.subtitle">心诚则灵，万里亦至</p>
+
+      <!-- 香炉 -->
+      <div class="burner-area" id="burner-area">
+        <div class="incense-group" id="incense-group"></div>
+        <div class="burner">
+          <div class="burner-rim"></div>
+          <div class="burner-body-shape"></div>
+          <div class="burner-base"></div>
+          <div class="burner-foot left"></div>
+          <div class="burner-foot right"></div>
+        </div>
+      </div>
+
+      <div class="incense-btns">
+        <button class="action-btn glow-btn" data-count="1" data-i18n="incense.one">🔥 上一柱香</button>
+        <button class="action-btn glow-btn" data-count="3" data-i18n="incense.three">🔥 上三柱香</button>
+      </div>
+
+      <!-- 祈愿输入 -->
+      <div class="prayer-input-wrap hidden" id="incense-input">
+        <p class="input-prompt" data-i18n="incense.prompt">写下您的心愿</p>
+        <div class="wish-cats" id="wish-cats">
+          <button class="wish-cat active" data-cat="health">🏥 <span data-i18n="cat.health">平安健康</span></button>
+          <button class="wish-cat" data-cat="study">📚 <span data-i18n="cat.study">学业有成</span></button>
+          <button class="wish-cat" data-cat="career">💼 <span data-i18n="cat.career">事业顺利</span></button>
+          <button class="wish-cat" data-cat="family">🏠 <span data-i18n="cat.family">家庭和睦</span></button>
+          <button class="wish-cat" data-cat="love">💕 <span data-i18n="cat.love">姻缘美满</span></button>
+        </div>
+        <textarea id="incense-textarea" maxlength="200" data-i18n-placeholder="incense.placeholder" placeholder="您的祈愿..."></textarea>
+        <button class="submit-btn" id="incense-submit" data-i18n="incense.submit">🙏 祈愿</button>
+      </div>
+
+      <!-- 佛经展示 -->
+      <div class="scripture-reveal hidden" id="incense-scripture">
+        <blockquote id="incense-verse-text"></blockquote>
+        <cite id="incense-verse-ref"></cite>
+      </div>
+
+      <!-- 电子木鱼 -->
+      <div class="woodfish-section" id="woodfish-section">
+        <div class="woodfish" id="woodfish" tabindex="0" role="button" aria-label="敲木鱼">
+          <span class="woodfish-icon">🪵</span>
+        </div>
+        <div class="merit-display">
+          <span data-i18n="merit.label">功德</span>: <span id="merit-count">0</span>
+        </div>
+        <div class="merit-floats" id="merit-floats"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 祈祷墙 ========== -->
+  <section id="prayer-wall">
+    <h2 class="section-title" data-i18n="wall.title">🙏 Prayer Wall</h2>
+    <p class="section-desc" data-i18n="wall.desc">Prayers from around the world, united by faith</p>
+    <div class="wall-container" id="wall-container"></div>
+  </section>
+
+  <!-- ========== 经文阅读 ========== -->
+  <section id="scripture-section">
+    <h2 class="section-title" data-i18n="scripture.title">📖 Scripture</h2>
+    <div class="scripture-tabs">
+      <button class="scripture-tab active" data-tab="bible" id="tab-bible">Holy Bible</button>
+      <button class="scripture-tab" data-tab="sutra" id="tab-sutra">佛经</button>
+    </div>
+    <div class="scripture-content" id="scripture-content"></div>
+  </section>
+
+  <!-- ========== Footer ========== -->
+  <footer id="site-footer">
+    <p>© 2026 Sacred Flame · <span data-i18n="footer.desc">A space for prayer and peace</span></p>
+    <p class="footer-disclaimer" data-i18n="footer.disclaimer">This site is for spiritual comfort only and does not represent any religious organization.</p>
+  </footer>
+
+  <!-- 音效控制 -->
+  <button class="audio-btn" id="audio-toggle" aria-label="Toggle audio">🔇</button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
