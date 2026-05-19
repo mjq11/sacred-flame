@@ -1,359 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sacred Flame — Online Prayer & Incense</title>
-  <meta name="description" content="A cross-cultural online prayer platform. Light a candle or burn incense — wherever you are, your prayer reaches heaven.">
-  <meta name="keywords" content="online prayer, virtual candle, incense burning, 在线祈福, 烧香">
+  <title>Sacred Flame — Choose Your Path</title>
+  <meta name="description" content="Online prayer platform for Christians and Buddhists. Light candles or burn incense — wherever you are.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:#0a0a12;color:#ede5d8;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+    .bg{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(74,63,138,0.12) 0%,transparent 60%),radial-gradient(ellipse at 30% 70%,rgba(201,169,110,0.08) 0%,transparent 50%),#0a0a12;z-index:0}
+    .content{position:relative;z-index:1;text-align:center;padding:2rem}
+    h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,7vw,4.5rem);font-weight:700;background:linear-gradient(135deg,#e8c97a,#c9a96e,#f5e6c8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem;letter-spacing:2px}
+    .tagline{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:#8a8290;margin-bottom:2.5rem}
+    .cards{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}
+    .card{position:relative;width:300px;padding:3rem 2rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:24px;text-align:center;transition:all .4s cubic-bezier(.25,.46,.45,.94);overflow:hidden;text-decoration:none;color:inherit;cursor:pointer}
+    .card:hover{transform:translateY(-10px);box-shadow:0 25px 60px rgba(0,0,0,.4)}
+    .card-christian:hover{border-color:rgba(100,120,200,.5);box-shadow:0 25px 60px rgba(74,63,138,.2)}
+    .card-buddhist:hover{border-color:rgba(201,169,110,.5);box-shadow:0 25px 60px rgba(201,169,110,.15)}
+    .card-glow{position:absolute;top:-60%;left:-60%;width:220%;height:220%;border-radius:50%;opacity:0;transition:opacity .5s}
+    .card:hover .card-glow{opacity:1}
+    .glow-c{background:radial-gradient(circle,rgba(74,63,138,.15),transparent 55%)}
+    .glow-b{background:radial-gradient(circle,rgba(201,169,110,.12),transparent 55%)}
+    .card-icon{font-size:4rem;margin-bottom:1.2rem}
+    .card h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;margin-bottom:.4rem}
+    .card-christian h2{color:#a8b4e8}
+    .card-buddhist h2{color:#e8c97a}
+    .card p{font-size:.9rem;color:#8a8290;margin-bottom:1.2rem;line-height:1.5}
+    .card-btn{display:inline-block;padding:.6rem 1.8rem;border-radius:25px;font-size:.9rem;font-weight:600;transition:all .3s}
+    .card-christian .card-btn{border:1px solid rgba(100,120,200,.4);color:#a8b4e8}
+    .card-christian:hover .card-btn{background:rgba(100,120,200,.15)}
+    .card-buddhist .card-btn{border:1px solid rgba(201,169,110,.4);color:#e8c97a}
+    .card-buddhist:hover .card-btn{background:rgba(201,169,110,.1)}
+    .footer{position:fixed;bottom:1.5rem;font-size:.75rem;color:#555;z-index:1}
+    @media(max-width:680px){.cards{flex-direction:column;align-items:center}.card{width:90%;max-width:340px}}
+  </style>
 </head>
 <body>
-
-  <!-- ========== 导航栏 ========== -->
-  <nav id="main-nav">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo" id="nav-logo">🔥 Sacred Flame</a>
-      <div class="nav-links">
-        <a href="#hero" data-i18n="nav.home">Home</a>
-        <a href="#prayer-wall" data-i18n="nav.wall">Prayer Wall</a>
-        <a href="#scripture-section" data-i18n="nav.scripture">Scripture</a>
-        <a href="#offerings-section" data-i18n="nav.shop">Shop</a>
-        <a href="#donate-section" data-i18n="nav.donate">Donate</a>
-      </div>
-      <button class="currency-toggle" id="currency-toggle" aria-label="Toggle currency">$ USD</button>
-      <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
-        <span class="lang-en">中文</span>
-        <span class="lang-zh" style="display:none">EN</span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ========== Hero 区域 ========== -->
-  <section id="hero">
-    <div class="hero-particles" id="hero-particles"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">Sacred Flame</h1>
-      <p class="hero-tagline" data-i18n="hero.tagline">Where Faith Meets Light</p>
-      <p class="hero-desc" data-i18n="hero.desc">No matter where you are, your prayer reaches heaven</p>
-
-      <!-- 今日经文 -->
-      <div class="daily-verse" id="daily-verse">
-        <span class="daily-label" data-i18n="daily.label">✨ Today's Blessing</span>
-        <p class="daily-text" id="daily-text"></p>
-        <cite class="daily-ref" id="daily-ref"></cite>
-      </div>
-
-      <div class="mode-cards">
-        <!-- 蜡烛模式卡片 -->
-        <div class="mode-card" id="card-candle" tabindex="0" role="button" aria-label="Enter Candle Prayer mode">
-          <div class="mode-card-glow candle-glow"></div>
-          <div class="mode-card-icon">🕯️</div>
-          <h2 class="mode-card-title" data-i18n="mode.candle.title">Candle Prayer</h2>
-          <p class="mode-card-desc" data-i18n="mode.candle.desc">Light a candle, offer your prayer</p>
-          <span class="mode-card-btn" data-i18n="mode.enter">Enter →</span>
-        </div>
-
-        <!-- 烧香模式卡片 -->
-        <div class="mode-card" id="card-incense" tabindex="0" role="button" aria-label="Enter Incense Prayer mode">
-          <div class="mode-card-glow incense-glow"></div>
-          <div class="mode-card-icon">🔥</div>
-          <h2 class="mode-card-title" data-i18n="mode.incense.title">Incense Prayer</h2>
-          <p class="mode-card-desc" data-i18n="mode.incense.desc">Burn incense, make a wish</p>
-          <span class="mode-card-btn" data-i18n="mode.enter">Enter →</span>
-        </div>
-
-        <!-- 求签模式卡片 -->
-        <div class="mode-card" id="card-fortune" tabindex="0" role="button" aria-label="Enter Fortune Drawing mode">
-          <div class="mode-card-glow fortune-glow"></div>
-          <div class="mode-card-icon">🎋</div>
-          <h2 class="mode-card-title" data-i18n="mode.fortune.title">Fortune Sticks</h2>
-          <p class="mode-card-desc" data-i18n="mode.fortune.desc">Shake & draw your fortune</p>
-          <span class="mode-card-btn" data-i18n="mode.enter">Enter →</span>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-hint" data-i18n="hero.scroll">↓ Prayer Wall</div>
-  </section>
-
-  <!-- ========== 蜡烛祈祷场景 ========== -->
-  <section id="candle-scene" class="prayer-scene" aria-hidden="true">
-    <div class="scene-overlay"></div>
-    <button class="back-btn" id="candle-back" data-i18n="btn.back">← Back</button>
-
-    <!-- 教堂装饰光效 -->
-    <div class="church-glow"></div>
-    <div class="cross-symbol">✝</div>
-
-    <div class="scene-body">
-      <h2 class="scene-title" data-i18n="candle.title">Light a Candle for Your Prayer</h2>
-      <p class="scene-subtitle" data-i18n="candle.subtitle">Let your light shine before others</p>
-
-      <!-- 蜡烛架 -->
-      <div class="candle-rack" id="candle-rack">
-        <div class="candle" data-index="0">
-          <div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div>
-          <div class="wick"></div><div class="wax"></div><div class="wax-drip"></div>
-        </div>
-        <div class="candle" data-index="1">
-          <div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div>
-          <div class="wick"></div><div class="wax"></div><div class="wax-drip"></div>
-        </div>
-        <div class="candle" data-index="2">
-          <div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div>
-          <div class="wick"></div><div class="wax"></div><div class="wax-drip"></div>
-        </div>
-        <div class="candle" data-index="3">
-          <div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div>
-          <div class="wick"></div><div class="wax"></div><div class="wax-drip"></div>
-        </div>
-        <div class="candle" data-index="4">
-          <div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div>
-          <div class="wick"></div><div class="wax"></div><div class="wax-drip"></div>
-        </div>
-      </div>
-
-      <button class="action-btn glow-btn" id="light-candle-btn" data-i18n="candle.light">🕯️ Light a Candle</button>
-
-      <!-- 祈祷输入 -->
-      <div class="prayer-input-wrap hidden" id="candle-input">
-        <p class="input-prompt" data-i18n="candle.prompt">What's on your heart?</p>
-        <div class="pray-for-wrap">
-          <label data-i18n="pray.for">🤍 Pray for:</label>
-          <input type="text" class="pray-for-input" id="candle-prayfor" data-i18n-placeholder="pray.for.ph" placeholder="A loved one's name (optional)">
-        </div>
-        <textarea id="candle-textarea" maxlength="200" data-i18n-placeholder="candle.placeholder" placeholder="Write your prayer..."></textarea>
-        <button class="submit-btn" id="candle-submit" data-i18n="candle.submit">Amen 🙏</button>
-      </div>
-
-      <!-- 经文展示 -->
-      <div class="scripture-reveal hidden" id="candle-scripture">
-        <blockquote id="candle-verse-text"></blockquote>
-        <cite id="candle-verse-ref"></cite>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 烧香祈福场景 ========== -->
-  <section id="incense-scene" class="prayer-scene" aria-hidden="true">
-    <div class="scene-overlay"></div>
-    <button class="back-btn" id="incense-back" data-i18n="btn.back">← Back</button>
-
-    <!-- 佛堂装饰光效 -->
-    <div class="temple-glow"></div>
-    <div class="buddha-symbol">☸</div>
-
-    <div class="scene-body">
-      <h2 class="scene-title" data-i18n="incense.title">虔诚上香</h2>
-      <p class="scene-subtitle" data-i18n="incense.subtitle">心诚则灵，万里亦至</p>
-
-      <!-- 香炉 -->
-      <div class="burner-area" id="burner-area">
-        <div class="incense-group" id="incense-group"></div>
-        <div class="burner">
-          <div class="burner-rim"></div>
-          <div class="burner-body-shape"></div>
-          <div class="burner-base"></div>
-          <div class="burner-foot left"></div>
-          <div class="burner-foot right"></div>
-        </div>
-      </div>
-
-      <div class="incense-btns">
-        <button class="action-btn glow-btn" data-count="1" data-i18n="incense.one">🔥 上一柱香</button>
-        <button class="action-btn glow-btn" data-count="3" data-i18n="incense.three">🔥 上三柱香</button>
-      </div>
-
-      <!-- 祈愿输入 -->
-      <div class="prayer-input-wrap hidden" id="incense-input">
-        <p class="input-prompt" data-i18n="incense.prompt">写下您的心愿</p>
-        <div class="pray-for-wrap">
-          <label data-i18n="pray.for.zh">🤍 为谁祈福：</label>
-          <input type="text" class="pray-for-input" id="incense-prayfor" data-i18n-placeholder="pray.for.ph.zh" placeholder="亲人的名字（选填）">
-        </div>
-        <div class="wish-cats" id="wish-cats">
-          <button class="wish-cat active" data-cat="health">🏥 <span data-i18n="cat.health">平安健康</span></button>
-          <button class="wish-cat" data-cat="study">📚 <span data-i18n="cat.study">学业有成</span></button>
-          <button class="wish-cat" data-cat="career">💼 <span data-i18n="cat.career">事业顺利</span></button>
-          <button class="wish-cat" data-cat="family">🏠 <span data-i18n="cat.family">家庭和睦</span></button>
-          <button class="wish-cat" data-cat="love">💕 <span data-i18n="cat.love">姻缘美满</span></button>
-        </div>
-        <textarea id="incense-textarea" maxlength="200" data-i18n-placeholder="incense.placeholder" placeholder="您的祈愿..."></textarea>
-        <button class="submit-btn" id="incense-submit" data-i18n="incense.submit">🙏 祈愿</button>
-      </div>
-
-      <!-- 佛经展示 -->
-      <div class="scripture-reveal hidden" id="incense-scripture">
-        <blockquote id="incense-verse-text"></blockquote>
-        <cite id="incense-verse-ref"></cite>
-      </div>
-
-      <!-- 电子木鱼 -->
-      <div class="woodfish-section" id="woodfish-section">
-        <div class="woodfish" id="woodfish" tabindex="0" role="button" aria-label="敲木鱼">
-          <span class="woodfish-icon">🪵</span>
-        </div>
-        <div class="merit-display">
-          <span data-i18n="merit.label">功德</span>: <span id="merit-count">0</span>
-        </div>
-        <div class="merit-floats" id="merit-floats"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 求签场景 ========== -->
-  <section id="fortune-scene" class="prayer-scene" aria-hidden="true">
-    <div class="scene-overlay fortune-overlay"></div>
-    <button class="back-btn" id="fortune-back" data-i18n="btn.back">← Back</button>
-    <div class="temple-glow"></div>
-    <div class="scene-body">
-      <h2 class="scene-title" data-i18n="fortune.title">🎋 求签问卦</h2>
-      <p class="scene-subtitle" data-i18n="fortune.subtitle">心诚则灵，摇签问天意</p>
-
-      <div class="fortune-container">
-        <div class="sign-tube" id="sign-tube">
-          <div class="tube-body">
-            <div class="stick-bundle" id="stick-bundle">
-              <div class="f-stick"></div><div class="f-stick"></div><div class="f-stick"></div>
-              <div class="f-stick"></div><div class="f-stick"></div><div class="f-stick"></div>
-              <div class="f-stick"></div><div class="f-stick"></div><div class="f-stick"></div>
-            </div>
-          </div>
-          <div class="tube-base"></div>
-        </div>
-        <button class="action-btn glow-btn shake-btn" id="shake-btn" data-i18n="fortune.shake">🎋 摇签</button>
-      </div>
-
-      <div class="fortune-result hidden" id="fortune-result">
-        <div class="fortune-rank" id="fortune-rank"></div>
-        <div class="fortune-poem" id="fortune-poem"></div>
-        <div class="fortune-explain" id="fortune-explain"></div>
-        <button class="action-btn" id="fortune-again" data-i18n="fortune.again">🔄 再求一签</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 祈祷墙 ========== -->
-  <section id="prayer-wall">
-    <h2 class="section-title" data-i18n="wall.title">🙏 Prayer Wall</h2>
-    <p class="section-desc" data-i18n="wall.desc">Prayers from around the world, united by faith</p>
-    <div class="wall-container" id="wall-container"></div>
-  </section>
-
-  <!-- ========== 经文阅读 ========== -->
-  <section id="scripture-section">
-    <h2 class="section-title" data-i18n="scripture.title">📖 Scripture</h2>
-    <div class="scripture-tabs">
-      <button class="scripture-tab active" data-tab="bible" id="tab-bible">Holy Bible</button>
-      <button class="scripture-tab" data-tab="sutra" id="tab-sutra">佛经</button>
-    </div>
-    <div class="scripture-content" id="scripture-content"></div>
-  </section>
-
-  <!-- ========== 供品商城 ========== -->
-  <section id="offerings-section">
-    <h2 class="section-title" data-i18n="shop.title">🛕 Sacred Offerings</h2>
-    <p class="section-desc" data-i18n="shop.desc">Enhance your prayer with sacred virtual offerings</p>
-
-    <!-- 祈福套餐 -->
-    <div class="plans-area">
-      <h3 class="subsection-title" data-i18n="shop.plans">✨ Blessing Plans</h3>
-      <div class="plans-grid">
-        <div class="plan-card">
-          <div class="plan-badge free" data-i18n="plan.free.badge">Free</div>
-          <h4 class="plan-name" data-i18n="plan.free.name">Basic Blessing</h4>
-          <div class="plan-price"><span class="price-usd">$0</span><span class="price-cny" style="display:none">¥0</span></div>
-          <ul class="plan-features">
-            <li data-i18n="plan.free.f1">1 candle or 1 incense</li>
-            <li data-i18n="plan.free.f2">Write a prayer</li>
-            <li data-i18n="plan.free.f3">Scripture reading</li>
-          </ul>
-          <button class="plan-btn current" data-i18n="plan.free.btn">Current Plan</button>
-        </div>
-        <div class="plan-card featured">
-          <div class="plan-badge popular" data-i18n="plan.mid.badge">Most Popular</div>
-          <h4 class="plan-name" data-i18n="plan.mid.name">Devout Blessing</h4>
-          <div class="plan-price"><span class="price-usd">$2.99</span><span class="price-cny" style="display:none">¥19.99</span><span class="price-period" data-i18n="plan.period">/time</span></div>
-          <ul class="plan-features">
-            <li data-i18n="plan.mid.f1">3 candles + sacred flowers</li>
-            <li data-i18n="plan.mid.f2">Prayer Wall featured spot</li>
-            <li data-i18n="plan.mid.f3">Golden prayer card</li>
-            <li data-i18n="plan.mid.f4">Personalized scripture</li>
-          </ul>
-          <button class="plan-btn buy-btn" data-product="devout-blessing" data-i18n="plan.mid.btn">Choose Plan</button>
-        </div>
-        <div class="plan-card premium">
-          <div class="plan-badge ultimate" data-i18n="plan.top.badge">Ultimate</div>
-          <h4 class="plan-name" data-i18n="plan.top.name">Annual Guardian</h4>
-          <div class="plan-price"><span class="price-usd">$19.99</span><span class="price-cny" style="display:none">¥139.99</span><span class="price-period" data-i18n="plan.period.yr">/year</span></div>
-          <ul class="plan-features">
-            <li data-i18n="plan.top.f1">Eternal light + lotus lantern</li>
-            <li data-i18n="plan.top.f2">All sacred offerings included</li>
-            <li data-i18n="plan.top.f3">Diamond prayer card on Wall</li>
-            <li data-i18n="plan.top.f4">365-day continuous blessing</li>
-            <li data-i18n="plan.top.f5">Priority prayer queue</li>
-          </ul>
-          <button class="plan-btn buy-btn" data-product="annual-guardian" data-i18n="plan.top.btn">Choose Plan</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 单品供品 -->
-    <h3 class="subsection-title" data-i18n="shop.items">🎁 Individual Offerings</h3>
-    <div class="shop-grid" id="shop-grid"></div>
-  </section>
-
-  <!-- ========== 功德捐赠 ========== -->
-  <section id="donate-section">
-    <h2 class="section-title" data-i18n="donate.title">💝 Offerings & Donations</h2>
-    <p class="section-desc" data-i18n="donate.desc">Your generosity keeps this sacred space alive for all</p>
-    <div class="donate-box">
-      <div class="donate-amounts">
-        <button class="donate-amt" data-amt="1"><span class="price-usd">$1</span><span class="price-cny" style="display:none">¥7</span></button>
-        <button class="donate-amt" data-amt="5"><span class="price-usd">$5</span><span class="price-cny" style="display:none">¥35</span></button>
-        <button class="donate-amt active" data-amt="10"><span class="price-usd">$10</span><span class="price-cny" style="display:none">¥70</span></button>
-        <button class="donate-amt" data-amt="25"><span class="price-usd">$25</span><span class="price-cny" style="display:none">¥175</span></button>
-        <button class="donate-amt" data-amt="50"><span class="price-usd">$50</span><span class="price-cny" style="display:none">¥350</span></button>
-        <button class="donate-amt custom-amt" data-amt="custom" data-i18n="donate.custom">Custom</button>
-      </div>
-      <input type="number" class="donate-custom-input hidden" id="donate-custom" placeholder="Enter amount" min="1">
-      <button class="submit-btn donate-btn" id="donate-btn" data-i18n="donate.btn">💝 Donate Now</button>
-      <p class="donate-note" data-i18n="donate.note">All donations support site maintenance and development</p>
-    </div>
-  </section>
-
-  <!-- ========== 购买弹窗 ========== -->
-  <div class="modal-overlay hidden" id="purchase-modal">
-    <div class="modal-box">
-      <button class="modal-close" id="modal-close">✕</button>
-      <div class="modal-icon" id="modal-icon">🕯️</div>
-      <h3 class="modal-title" id="modal-title">Item Name</h3>
-      <p class="modal-price" id="modal-price">$0.00</p>
-      <p class="modal-desc" id="modal-desc">Description</p>
-      <div class="modal-payment">
-        <p class="modal-pay-label" data-i18n="modal.pay">Choose payment method:</p>
-        <div class="pay-methods">
-          <button class="pay-btn paypal">PayPal</button>
-          <button class="pay-btn stripe">Credit Card</button>
-          <button class="pay-btn wechat" data-i18n="modal.wechat">WeChat Pay</button>
-        </div>
-      </div>
-      <p class="modal-disclaimer" data-i18n="modal.disclaimer">Payment integration coming soon. Thank you for your interest!</p>
+  <div class="bg"></div>
+  <div class="content">
+    <h1>Sacred Flame</h1>
+    <p class="tagline">Choose your path of prayer</p>
+    <div class="cards">
+      <a href="christian/" class="card card-christian">
+        <div class="card-glow glow-c"></div>
+        <div class="card-icon">✝️</div>
+        <h2>Sacred Light</h2>
+        <p>Light a candle, read Scripture, and offer your prayer to the Lord.</p>
+        <span class="card-btn">Enter →</span>
+      </a>
+      <a href="buddhist/" class="card card-buddhist">
+        <div class="card-glow glow-b"></div>
+        <div class="card-icon">☸️</div>
+        <h2>心香殿</h2>
+        <p>虔诚上香，求签问卦，为远方亲人祈福保平安。</p>
+        <span class="card-btn">进入 →</span>
+      </a>
     </div>
   </div>
-
-  <!-- ========== Footer ========== -->
-  <footer id="site-footer">
-    <p>© 2026 Sacred Flame · <span data-i18n="footer.desc">A space for prayer and peace</span></p>
-    <p class="footer-disclaimer" data-i18n="footer.disclaimer">This site is for spiritual comfort only and does not represent any religious organization.</p>
-  </footer>
-
-  <!-- 音效控制 -->
-  <button class="audio-btn" id="audio-toggle" aria-label="Toggle audio">🔇</button>
-
-  <script src="js/main.js"></script>
+  <div class="footer">© 2026 Sacred Flame · For spiritual comfort only</div>
 </body>
 </html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacred Light — Online Candle Prayer</title>
+  <meta name="description" content="Light a virtual candle and offer your prayer. Read Scripture and find peace wherever you are.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav id="main-nav"><div class="nav-inner">
+    <a href="../" class="nav-logo">✝️ Sacred Light</a>
+    <div class="nav-links">
+      <a href="#hero">Home</a><a href="#prayer-wall">Prayer Wall</a><a href="#scripture-section">Scripture</a><a href="#offerings-section">Shop</a>
+    </div>
+  </div></nav>
+
+  <section id="hero">
+    <div class="hero-particles" id="hero-particles"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Sacred Light</h1>
+      <p class="hero-tagline">Let your light shine before others — Matthew 5:16</p>
+      <p class="hero-desc">No matter where you are, your prayer reaches heaven</p>
+      <div class="daily-verse" id="daily-verse">
+        <span class="daily-label">✨ Today's Blessing</span>
+        <p class="daily-text" id="daily-text"></p>
+        <cite class="daily-ref" id="daily-ref"></cite>
+      </div>
+      <button class="action-btn glow-btn hero-cta" id="start-prayer">🕯️ Light a Candle</button>
+    </div>
+    <div class="scroll-hint">↓ Prayer Wall</div>
+  </section>
+
+  <section id="candle-scene" class="prayer-scene" aria-hidden="true">
+    <div class="scene-overlay"></div>
+    <button class="back-btn" id="candle-back">← Back</button>
+    <div class="church-glow"></div>
+    <div class="cross-symbol">✝</div>
+    <div class="scene-body">
+      <h2 class="scene-title">Light a Candle for Your Prayer</h2>
+      <p class="scene-subtitle">Cast all your anxiety on Him, because He cares for you — 1 Peter 5:7</p>
+      <div class="candle-rack" id="candle-rack">
+        <div class="candle" data-index="0"><div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div><div class="wick"></div><div class="wax"></div></div>
+        <div class="candle" data-index="1"><div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div><div class="wick"></div><div class="wax"></div></div>
+        <div class="candle" data-index="2"><div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div><div class="wick"></div><div class="wax"></div></div>
+        <div class="candle" data-index="3"><div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div><div class="wick"></div><div class="wax"></div></div>
+        <div class="candle" data-index="4"><div class="flame-wrap"><div class="flame"><div class="flame-top"></div><div class="flame-mid"></div><div class="flame-bot"></div></div><div class="flame-glow"></div></div><div class="wick"></div><div class="wax"></div></div>
+      </div>
+      <button class="action-btn glow-btn" id="light-candle-btn">🕯️ Light a Candle</button>
+      <div class="prayer-input-wrap hidden" id="candle-input">
+        <p class="input-prompt">What's on your heart?</p>
+        <div class="pray-for-wrap">
+          <label>🤍 Pray for:</label>
+          <input type="text" class="pray-for-input" id="candle-prayfor" placeholder="A loved one's name (optional)">
+        </div>
+        <textarea id="candle-textarea" maxlength="200" placeholder="Write your prayer..."></textarea>
+        <button class="submit-btn" id="candle-submit">Amen 🙏</button>
+      </div>
+      <div class="scripture-reveal hidden" id="candle-scripture">
+        <blockquote id="candle-verse-text"></blockquote>
+        <cite id="candle-verse-ref"></cite>
+      </div>
+    </div>
+  </section>
+
+  <section id="prayer-wall">
+    <h2 class="section-title">🙏 Prayer Wall</h2>
+    <p class="section-desc">Prayers from brothers and sisters around the world</p>
+    <div class="wall-container" id="wall-container"></div>
+  </section>
+
+  <section id="scripture-section">
+    <h2 class="section-title">📖 Holy Scripture</h2>
+    <div class="scripture-content" id="scripture-content"></div>
+  </section>
+
+  <section id="offerings-section">
+    <h2 class="section-title">🕯️ Sacred Offerings</h2>
+    <p class="section-desc">Enhance your prayer with sacred virtual offerings</p>
+    <div class="shop-grid" id="shop-grid"></div>
+  </section>
+
+  <section id="donate-section">
+    <h2 class="section-title">💝 Tithes & Offerings</h2>
+    <p class="section-desc">Your generosity keeps this sacred space alive</p>
+    <div class="donate-box">
+      <div class="donate-amounts">
+        <button class="donate-amt" data-amt="1">$1</button>
+        <button class="donate-amt" data-amt="5">$5</button>
+        <button class="donate-amt active" data-amt="10">$10</button>
+        <button class="donate-amt" data-amt="25">$25</button>
+        <button class="donate-amt" data-amt="50">$50</button>
+      </div>
+      <button class="submit-btn donate-btn" id="donate-btn">💝 Donate Now</button>
+      <p class="donate-note">All donations support site maintenance</p>
+    </div>
+  </section>
+
+  <footer><p>© 2026 Sacred Light · <a href="../">← Back to Sacred Flame</a></p>
+    <p class="footer-disc">For spiritual comfort only. Does not represent any religious organization.</p>
+  </footer>
+
+  <div class="modal-overlay hidden" id="purchase-modal">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-icon" id="modal-icon">🕯️</div>
+      <h3 class="modal-title" id="modal-title"></h3>
+      <p class="modal-price" id="modal-price"></p>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="pay-methods">
+        <button class="pay-btn">PayPal</button><button class="pay-btn">Credit Card</button>
+      </div>
+      <p class="modal-disc">Payment integration coming soon.</p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

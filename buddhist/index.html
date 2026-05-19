@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>心香殿 — 在线烧香祈福</title>
+  <meta name="description" content="心香殿 — 海外华人在线烧香祈福平台。虔诚上香、求签问卦、电子木鱼、为远方亲人祈福保平安。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav id="main-nav"><div class="nav-inner">
+    <span class="nav-logo">☸ 心香殿</span>
+    <div class="nav-links">
+      <a href="#hero">首页</a><a href="#prayer-wall">祈福墙</a><a href="#scripture-section">佛经</a><a href="#offerings-section">供品</a>
+    </div>
+    <button class="lang-toggle" id="lang-toggle">EN</button>
+  </div></nav>
+
+  <section id="hero">
+    <div class="hero-particles" id="hero-particles"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">心香殿</h1>
+      <p class="hero-tagline" data-i18n="tagline">心诚则灵，万里亦至</p>
+      <p class="hero-desc" data-i18n="desc">身在海外，心系故土。无论身处何方，佛祖都能听到您的祈愿</p>
+      <div class="daily-verse" id="daily-verse">
+        <span class="daily-label" data-i18n="daily">✨ 今日佛语</span>
+        <p class="daily-text" id="daily-text"></p>
+        <cite class="daily-ref" id="daily-ref"></cite>
+      </div>
+      <div class="mode-cards">
+        <div class="mode-card" id="card-incense" tabindex="0">
+          <div class="mode-card-glow incense-glow"></div>
+          <div class="mode-card-icon">🔥</div>
+          <h2 class="mode-card-title" data-i18n="mode.incense">烧香祈福</h2>
+          <p class="mode-card-desc" data-i18n="mode.incense.d">点一柱香，许下心愿</p>
+          <span class="mode-card-btn" data-i18n="enter">进入 →</span>
+        </div>
+        <div class="mode-card" id="card-fortune" tabindex="0">
+          <div class="mode-card-glow fortune-glow"></div>
+          <div class="mode-card-icon">🎋</div>
+          <h2 class="mode-card-title" data-i18n="mode.fortune">求签问卦</h2>
+          <p class="mode-card-desc" data-i18n="mode.fortune.d">摇签问天意，求签解惑</p>
+          <span class="mode-card-btn" data-i18n="enter">进入 →</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint" data-i18n="scroll">↓ 祈福墙</div>
+  </section>
+
+  <!-- 烧香场景 -->
+  <section id="incense-scene" class="prayer-scene" aria-hidden="true">
+    <div class="scene-overlay"></div>
+    <button class="back-btn" id="incense-back" data-i18n="back">← 返回</button>
+    <div class="temple-glow"></div>
+    <div class="buddha-symbol">☸</div>
+    <div class="scene-body">
+      <h2 class="scene-title" data-i18n="incense.title">虔诚上香</h2>
+      <p class="scene-subtitle" data-i18n="incense.sub">心诚则灵，万里亦至</p>
+      <div class="burner-area">
+        <div class="incense-group" id="incense-group"></div>
+        <div class="burner"><div class="burner-rim"></div><div class="burner-body-shape"></div><div class="burner-base"></div><div class="burner-foot left"></div><div class="burner-foot right"></div></div>
+      </div>
+      <div class="incense-btns">
+        <button class="action-btn" data-count="1" data-i18n="inc.one">🔥 上一柱香</button>
+        <button class="action-btn" data-count="3" data-i18n="inc.three">🔥 上三柱香</button>
+      </div>
+      <div class="prayer-input-wrap hidden" id="incense-input">
+        <p class="input-prompt" data-i18n="wish.prompt">写下您的心愿</p>
+        <div class="pray-for-wrap">
+          <label data-i18n="prayfor">🤍 为谁祈福：</label>
+          <input type="text" class="pray-for-input" id="incense-prayfor" data-i18n-ph="prayfor.ph" placeholder="亲人的名字（选填）">
+        </div>
+        <div class="wish-cats">
+          <button class="wish-cat active" data-cat="health">🏥 <span data-i18n="cat.health">平安健康</span></button>
+          <button class="wish-cat" data-cat="study">📚 <span data-i18n="cat.study">学业有成</span></button>
+          <button class="wish-cat" data-cat="career">💼 <span data-i18n="cat.career">事业顺利</span></button>
+          <button class="wish-cat" data-cat="family">🏠 <span data-i18n="cat.family">家庭和睦</span></button>
+          <button class="wish-cat" data-cat="love">💕 <span data-i18n="cat.love">姻缘美满</span></button>
+        </div>
+        <textarea id="incense-textarea" maxlength="200" data-i18n-ph="wish.ph" placeholder="您的祈愿..."></textarea>
+        <button class="submit-btn" id="incense-submit" data-i18n="pray.submit">🙏 祈愿</button>
+      </div>
+      <div class="scripture-reveal hidden" id="incense-scripture">
+        <blockquote id="incense-verse-text"></blockquote>
+        <cite id="incense-verse-ref"></cite>
+      </div>
+      <div class="woodfish-section">
+        <p class="wf-label" data-i18n="wf.label">🪵 电子木鱼</p>
+        <div class="woodfish" id="woodfish">🪵</div>
+        <p class="merit-display" data-i18n="merit.label">功德：<span id="merit-count">0</span></p>
+        <div class="merit-floats" id="merit-floats"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 求签场景 -->
+  <section id="fortune-scene" class="prayer-scene" aria-hidden="true">
+    <div class="scene-overlay fortune-overlay"></div>
+    <button class="back-btn" id="fortune-back" data-i18n="back">← 返回</button>
+    <div class="temple-glow"></div>
+    <div class="scene-body">
+      <h2 class="scene-title" data-i18n="fortune.title">🎋 求签问卦</h2>
+      <p class="scene-subtitle" data-i18n="fortune.sub">心诚则灵，摇签问天意</p>
+      <div class="fortune-container">
+        <div class="sign-tube" id="sign-tube">
+          <div class="tube-body"><div class="stick-bundle" id="stick-bundle">
+            <div class="f-stick"></div><div class="f-stick"></div><div class="f-stick"></div>
+            <div class="f-stick"></div><div class="f-stick"></div><div class="f-stick"></div>
+            <div class="f-stick"></div><div class="f-stick"></div><div class="f-stick"></div>
+          </div></div>
+          <div class="tube-base"></div>
+        </div>
+        <button class="action-btn glow-btn shake-btn" id="shake-btn" data-i18n="shake">🎋 摇签</button>
+      </div>
+      <div class="fortune-result hidden" id="fortune-result">
+        <div class="fortune-rank" id="fortune-rank"></div>
+        <div class="fortune-poem" id="fortune-poem"></div>
+        <div class="fortune-explain" id="fortune-explain"></div>
+        <button class="action-btn" id="fortune-again" data-i18n="again">🔄 再求一签</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="prayer-wall">
+    <h2 class="section-title" data-i18n="wall.title">🙏 祈福墙</h2>
+    <p class="section-desc" data-i18n="wall.desc">来自世界各地华人的虔诚祈愿</p>
+    <div class="wall-container" id="wall-container"></div>
+  </section>
+
+  <section id="scripture-section">
+    <h2 class="section-title" data-i18n="sutra.title">📖 佛经阅读</h2>
+    <div class="scripture-content" id="scripture-content"></div>
+  </section>
+
+  <section id="offerings-section">
+    <h2 class="section-title" data-i18n="shop.title">🛕 神圣供品</h2>
+    <p class="section-desc" data-i18n="shop.desc">以虔诚的供品增强您的祈祷</p>
+    <div class="shop-grid" id="shop-grid"></div>
+  </section>
+
+  <section id="donate-section">
+    <h2 class="section-title" data-i18n="donate.title">💝 功德捐赠</h2>
+    <p class="section-desc" data-i18n="donate.desc">您的慷慨让心香殿持续为众人服务</p>
+    <div class="donate-box">
+      <div class="donate-amounts">
+        <button class="donate-amt" data-amt="1"><span class="p-usd">$1</span><span class="p-cny" style="display:none">¥7</span></button>
+        <button class="donate-amt" data-amt="5"><span class="p-usd">$5</span><span class="p-cny" style="display:none">¥35</span></button>
+        <button class="donate-amt active" data-amt="10"><span class="p-usd">$10</span><span class="p-cny" style="display:none">¥70</span></button>
+        <button class="donate-amt" data-amt="25"><span class="p-usd">$25</span><span class="p-cny" style="display:none">¥175</span></button>
+        <button class="donate-amt" data-amt="50"><span class="p-usd">$50</span><span class="p-cny" style="display:none">¥350</span></button>
+      </div>
+      <button class="submit-btn donate-btn" id="donate-btn" data-i18n="donate.btn">💝 立即捐赠</button>
+      <p class="donate-note" data-i18n="donate.note">所有捐赠用于网站维护和发展</p>
+    </div>
+  </section>
+
+  <footer><p>© 2026 心香殿 · <a href="../">← 返回选择</a></p>
+    <p class="footer-disc" data-i18n="footer.disc">本网站仅供心灵慰藉，不代表任何宗教组织。</p>
+  </footer>
+
+  <div class="modal-overlay hidden" id="purchase-modal">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-icon" id="modal-icon">🏮</div>
+      <h3 class="modal-title" id="modal-title"></h3>
+      <p class="modal-price" id="modal-price"></p>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="pay-methods">
+        <button class="pay-btn">PayPal</button><button class="pay-btn">支付宝</button><button class="pay-btn">微信支付</button>
+      </div>
+      <p class="modal-disc" data-i18n="modal.disc">支付功能即将上线，感谢您的关注！</p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
